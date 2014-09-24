@@ -1,0 +1,12 @@
+{
+    "name": "rpn.leal/halloween",
+    "authors": [
+        {
+            "name": "Ron Leal",
+            "email": "ronleal0@gmail.com"
+        }
+    ],
+    "require": {
+    	"simplon/mysql": "*"
+    }
+}

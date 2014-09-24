@@ -1,0 +1,47 @@
+<!doctype html >
+<html class="no-js" lang="en" ng-app="app">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Halloween Landing for SEM</title>
+    <link rel="stylesheet" href="stylesheets/app.css" />
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Nosifer' rel='stylesheet' type='text/css'>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-resource.min.js"></script>
+    
+  </head>
+  <body>
+    <div ng-controller="ProductController">
+      <ul>
+        <li ng-repeat="product in results">{{product.label}}</li> 
+      </ul>
+    </div>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/foundation/js/foundation.min.js">
+
+    </script>
+    <script>
+    var app = angular.module("app",["ngResource"]);
+
+    // app.factory("Products", function($resource){
+    //   return $resource("http://become_seo:5gZy1XRg@de.channel.become.eu/livexml/3.1/decido_sem-de.portal/:query;category-results;product-results/:product?mode=default&rtype=JSON&callback=JSON_CALLBACK");
+    // });
+
+
+    // app.controller("ProductController",function($scope,Products){
+    //   Products.get({query : "mask"},function(data){
+    //     $scope.products = data;
+    //   });
+    // });
+
+app.controller("ProductController", function($scope, $http){
+  $http.get('http://localhost/halloween/libs/getdata.php').success(function(data){
+    $scope.results = data;
+    window.result = $scope.results;
+  });
+});
+
+    </script>
+  </body>
+</html>
